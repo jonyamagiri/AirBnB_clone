@@ -9,16 +9,29 @@ from datetime import datetime
 class BaseModel:
     """Defines all common attributes/methods for other classes
     Methods:
-        def __init__(self)
+        def __init__(self, *args, **kwargs)
         def __str__(self)
         def save(self)
         def to_dict(self)
     """
-    def __init__(self):
-        """Initializes the class"""
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+    def __init__(self, *args, **kwargs):
+        """Initializes the class
+        Args:
+            *args (any): not used
+            **kwargs (dictionary): key-value pairs of attributes
+        """
+        dt_format = "%Y-%m-%dT%H:%M:%S.%f"  # (ex:2017-06-14T22:31:03.285259)
+        if len(kwargs) != 0:
+            for key, value in kwargs.items():
+                if key == "created_at" or key == "updated_at":
+                    value = datetime.strptime(value, dt_format)
+                if key == "__class__":
+                    continue
+                setattr(self, key, value)
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
 
     def __str__(self):
         """Prints instance as: [<class name>] (<self.id>) <self.__dict__>"""
