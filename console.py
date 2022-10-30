@@ -5,6 +5,7 @@ Module console.py defines entry point of the command interpreter.
 import cmd
 from models import storage
 from models.base_model import BaseModel
+from models.user import User
 import json
 import shlex
 
@@ -69,7 +70,7 @@ class HBNBCommand(cmd.Cmd):
         elif model_type not in self.class_name:
             print("** class doesn't exist **")
         else:
-            model_dict = {'BaseModel': BaseModel}
+            model_dict = {'BaseModel': BaseModel, 'User': User}
             my_model = model_dict[model_type]()
             print(my_model.id)
             my_model.save()
