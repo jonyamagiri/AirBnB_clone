@@ -1,0 +1,15 @@
+/* Global style for the body */
+body {
+    color: #484848;
+    font-size: 14px;
+    font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.container {
+    margin: 30px auto;
+    max-width: 1000px;
+}
+
+strong {
+    font-weight: bold;
+}
