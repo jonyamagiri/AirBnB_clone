@@ -1,7 +1,6 @@
 ![image](https://user-images.githubusercontent.com/95341497/200180792-8c62ca0e-d276-4338-8331-34f8715f4941.png)
 
 
-
 # 0x01. AirBnB clone - Web static
 
 > This repository contains the tasks for `AirBnB clone - Web static` project and a description of what each program or function does:
